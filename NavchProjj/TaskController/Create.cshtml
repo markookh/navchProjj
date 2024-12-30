@@ -1,0 +1,30 @@
+@model TaskManager.TaskItem
+@{
+    ViewData["Title"] = "Create Task";
+}
+
+<h1>Create Task</h1>
+<form method="post">
+    <div class="form-group">
+        <label>Title</label>
+        <input class="form-control" type="text" name="Title" value="@Model.Title" />
+    </div>
+    <div class="form-group">
+        <label>Description</label>
+        <textarea class="form-control" name="Description">@Model.Description</textarea>
+    </div>
+    <div class="form-group">
+        <label>Priority</label>
+        <select class="form-control" name="Priority">
+            <option>Low</option>
+            <option>Medium</option>
+            <option>High</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label>Due Date</label>
+        <input class="form-control" type="date" name="DueDate" value="@Model.DueDate.ToString(\"yyyy-MM-dd\")" />
+    </div>
+    <button type="submit" class="btn btn-primary">Create</button>
+</form>
+

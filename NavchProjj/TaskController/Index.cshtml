@@ -1,0 +1,36 @@
+@model IEnumerable<TaskManager.TaskItem>
+@{
+    ViewData["Title"] = "Tasks";
+}
+
+<h1>Task List</h1>
+<a class="btn btn-primary" href="/Task/Create">Create New Task</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Priority</th>
+            <th>Due Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var task in Model)
+        {
+            <tr>
+                <td>@task.Title</td>
+                <td>@task.Description</td>
+                <td>@task.Priority</td>
+                <td>@task.DueDate.ToShortDateString()</td>
+                <td>
+                    <a class="btn btn-warning" href="/Task/Edit/@task.Id">Edit</a>
+                    <form method="post" action="/Task/Delete/@task.Id" style="display:inline;">
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
